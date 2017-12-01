@@ -37,6 +37,7 @@ import com.android.settingslib.RestrictedLockUtils;
 public class CosmicVersionPreferenceController extends PreferenceController
         implements LifecycleObserver, OnResume {
 
+    private static final String TAG = "CosmicVersionPref";
     private static final String PROPERTY_COSMIC_VERSION = "ro.cos.version";
     private static final String KEY_COSMIC_VERSION = "cosmic_version";
 
@@ -47,7 +48,7 @@ public class CosmicVersionPreferenceController extends PreferenceController
 
     private long[] mHits = new long[3];
 
-    public CosmicVersionPreferenceController(Context context) {
+    public CosmicVersionPreferenceController(Context context, Lifecycle lifecycle) {
         super(context);
         mUserManager = (UserManager) context.getSystemService(Context.USER_SERVICE);
         if (lifecycle != null) {
